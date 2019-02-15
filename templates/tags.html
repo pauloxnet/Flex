@@ -4,15 +4,15 @@
 
 {% block content %}
 <article class="single">
-  <header>
-    <h1>{{ _('Tags') }}</h1>
-  </header>
-  <div>
-    <ul class="list">
-      {%- for tag, articles in tags|sort %}
-          <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
-      {% endfor %}
-    </ul>
-  </div>
+<header>
+<h1>{{ _('Tags') }} 🏷️</h1>
+</header>
+<div>
+<ul class="list tags">
+{%- for tag, articles in tags|sort %}
+<li><a href="{{ SITEURL }}/{{ tag.url }}{% if not DISABLE_URL_HASH %}#top{% endif %}">{{ tag }}</a> ({{ articles|count }})</li>
+{% endfor %}
+</ul>
+</div>
 </article>
 {% endblock %}

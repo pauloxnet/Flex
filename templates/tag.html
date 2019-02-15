@@ -1,3 +1,7 @@
 {% extends "index.html" %}
-{% block title %} &ndash; {{ _('Tag %(name)s', name=tag) }}{% endblock %}
+{% block title %} &ndash; {{ tag }}{% endblock %}
 {% set summarise = True %}
+{% block content_title %}
+<h2 id="{{ tag }}" class="center">{{ _('Tag') }}: {{ tag }}</h2>
+<hr/>
+{% endblock %}

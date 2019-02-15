@@ -4,10 +4,10 @@
 {% set default_locale = 'en_US' %}
 {% endif %}
 <meta property="og:site_name" content="{{ SITENAME }}"/>
-<meta property="og:title" content="{{ SITENAME }}"/>
+<meta property="og:title" content="{{ SITENAME }} - {{ page.title|striptags|escape  }}"/>
 <meta property="og:description" content="{{ SITEDESCRIPTION }}"/>
 <meta property="og:locale" content="{{ default_locale }}"/>
-<meta property="og:url" content="{{ SITEURL }}"/>
+<meta property="og:url" content="{{ SITEURL }}/{{ page.url }}"/>
 <meta property="og:type" content="website"/>
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@{{TWITTER_USERNAME}}" />

@@ -1,18 +1,23 @@
 {% extends "base.html" %}
-
+{% block meta %}
+<meta name="author" content="{{ AUTHOR }}" />
+<meta name="description" content="{{ SITEDESCRIPTION }}" />
+{% if page.slug == 'about' %}
+{% include "partial/og_profile.html" %}
+{% else %}
+{% include "partial/og_page.html" %}
+{% endif %}
+{% endblock %}
 {% block title %} &ndash; {{ page.title }}{% endblock %}
-
 {% block content %}
 <article class="single">
-  <header>
-    {% import 'partial/translations.html' as translations with context %}
-    {{ translations.translations_for(page) }}
-    <h1 id="{{ page.slug }}">{{ page.title }}</h1>
-  </header>
-  <div>
-    {% block before_content %}{% endblock %}
-    {% block page_content %}{{ page.content }}{% endblock %}
-    {% block after_content %}{% endblock %}
-  </div>
+<header>{% import 'partial/translations.html' as translations with context %}{{ translations.translations_for(page) }}
+<h1 id="{{ page.slug }}">{{ page.title }}</h1>
+</header>
+<div>
+{% block before_content %}{% endblock %}
+{% block page_content %}{{ page.content }}{% endblock %}
+{% block after_content %}{% endblock %}
+</div>
 </article>
 {% endblock %}
