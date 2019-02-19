@@ -15,7 +15,9 @@
 {% else %}
 <meta name="robots" content="{{ ROBOTS }}" />
 {% endif %}
+{% block canonical_rel %}
 <link rel="canonical" href="{{ SITEURL }}">
+{% endblock %}
 {% if GOOGLE_ANALYTICS %}
 <link rel="preconnect" href="https://www.google-analytics.com">
 {% endif %}

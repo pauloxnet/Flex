@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block canonical_rel %}
+<link rel="canonical" href="{{ SITEURL }}/category">
+{% endblock %}
 {% block title %} &ndash; {{ _('Categories') }}{% endblock %}
 {% block content %}
 <article class="single">

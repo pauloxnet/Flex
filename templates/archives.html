@@ -1,6 +1,8 @@
 {% extends "base.html" %}
+{% block canonical_rel %}
+<link rel="canonical" href="{{ SITEURL }}/archive">
+{% endblock %}
 {% block title %} &ndash; {{ _('Archives') }}{% endblock %}
-
 {% block content %}
 <article class="single">
 <header>

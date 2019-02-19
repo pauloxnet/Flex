@@ -1,4 +1,10 @@
-{% extends "base.html" %}
+{% extends "base.html" %}{% block canonical_rel %}
+{% if page.canonical_url %}
+<link rel="canonical" href="{{ page.canonical_url }}">
+{% else %}
+<link rel="canonical" href="{{ SITEURL }}/{{ page.url }}">
+{% endif %}
+{% endblock %}
 {% block meta %}
 <meta name="author" content="{{ AUTHOR }}" />
 <meta name="description" content="{{ SITEDESCRIPTION }}" />

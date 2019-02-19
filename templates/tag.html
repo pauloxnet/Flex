@@ -1,4 +1,7 @@
 {% extends "index.html" %}
+{% block canonical_rel %}
+<link rel="canonical" href="{{ SITEURL }}/tag/{{ tag.slug }}">
+{% endblock %}
 {% block title %} &ndash; {{ tag }}{% endblock %}
 {% set summarise = True %}
 {% block content_title %}
