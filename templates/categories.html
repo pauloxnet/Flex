@@ -2,16 +2,16 @@
 {% block canonical_rel %}
 <link rel="canonical" href="{{ SITEURL }}/category">
 {% endblock %}
-{% block title %} &ndash; {{ _('Categories') }}{% endblock %}
+{% block title %} &ndash; 🗂️ {{ _('Categories') }}{% endblock %}
 {% block content %}
 <article class="single">
 <header>
-<h1>{{ _('Categories') }} 🗂️</h1>
+<h1 id="categories">🗂️ {{ _('Categories') }}</h1>
 </header>
 <div>
 <ul class="list categories">
 {% for category, articles in categories|sort %}
-<li><a href="{{ SITEURL }}/{{ category.url }}{% if not DISABLE_URL_HASH %}#top{% endif %}">{{ category }}</a> ({{ articles|count }})</li>
+<li><a href="{{ SITEURL }}/{{ category.url }}{% if not DISABLE_URL_HASH %}#top{% endif %}">{{ category.page.title }}</a> ({{ articles|count }})</li>
 {% endfor %}
 </ul>
 </div>

@@ -1,13 +1,9 @@
 {% extends "base.html" %}
-{% block canonical_rel %}
-{% set months = {'January': '01', 'February': '02', 'March': '03', 'April': '04', 'May': '05', 'June': '06', 'July': '07', 'August': '08', 'September': 09, 'October': '10', 'November': '11', 'December': '12'} %}
-<link rel="canonical" href="{{ SITEURL }}/{{ period[0] }}/{% if period[1] %}{{ months[period[1]] }}/{%endif%}{% if period[2] %}{{ '{:0>2d}'.format(period[2]) }}/{%endif%}">
-{% endblock %}
 {% block title %} &ndash; {{ period | reverse | join(' ') }}{% endblock %}
 {% block content %}
 <article class="single">
 <header>
-<h1>{{ period | reverse | join(' ') }} 📅</h1>
+<h1 id="archives">{{ period | reverse | join(' ') }} 📅</h1>
 </header>
 <div>
 <dl>

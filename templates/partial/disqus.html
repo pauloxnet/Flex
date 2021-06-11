@@ -1,18 +1,25 @@
 {% if DISQUS_SITENAME %}
 <!-- Disqus -->
+<a id="show-comments" onclick="disqus();return false;" style="width:100%" class="btn align-center">Read comments</a>
 <div id="disqus_thread"></div>
-<script type="text/javascript">
+<script>
+    var disqus_loaded = false;
+    var disqus_shortname = '{{ DISQUS_SITENAME }}';
     var disqus_config = function () {
         this.page.url = '{{ SITEURL }}/{{ article.url }}';
         this.page.identifier = '{{ article.url }}';
     };
-    var disqus_shortname = '{{ DISQUS_SITENAME }}';
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-        dsq.setAttribute('data-timestamp', +new Date());
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+    function disqus() {
+        if (!disqus_loaded) {
+            disqus_loaded = true;
+            var e = document.createElement("script"); e.type = "text/javascript"; e.async = true;
+            e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+            e.setAttribute('data-timestamp', +new Date());
+            (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(e);
+            document.getElementById("show-comments").style.display = "none";
+        }
+    }
+    var hash=window.location.hash.substr(1);if(hash.length>8){if(hash.substring(0,8)=="comment-"){disqus();}}
 </script>
 <noscript>
     {{ _('Please enable JavaScript to view comments.') }}

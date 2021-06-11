@@ -105,7 +105,7 @@ enable_page_level_ads: true
 {% if SITESUBTITLE %}<p class='subtitle'>{{ SITESUBTITLE }}</p>{% endif %}
 <ul class="social">
 {% for name, link in SOCIAL %}
-<li><a class="sc-{{ name }}" href="{{ link }}" target="_blank" rel="{% if name == 'mastodon' %}me{% else %}noopener{% endif %}" aria-label="{{ name }}"><i class="{% if name in ['envelope', 'rss'] %}fas{% else %}fab{% endif %} fa-{{ name }}{% if name == 'facebook' %}-f{% elif name == 'linkedin' %}-in{% endif %}"></i></a></li>
+<li><a class="sc-{{ name }}" href="{{ link }}" target="_blank" rel="noopener" aria-label="{{ name }}"><i class="{% if name in ['envelope', 'rss'] %}fas{% else %}fab{% endif %} fa-{{ name }}{% if name == 'facebook' %}-f{% elif name == 'linkedin' %}-in{% endif %}"></i></a></li>
 {% endfor %}
 </ul>
 {% if (pages and DISPLAY_PAGES_ON_MENU) or LINKS %}

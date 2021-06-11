@@ -20,7 +20,16 @@
 <header>{% import 'partial/translations.html' as translations with context %}{{ translations.translations_for(page) }}
 <h1 id="{{ page.slug }}">{{ page.title }}</h1>
 </header>
+{% if page.metadata['summary'] %}
+<h3>{{ page.summary }}</h3>
+{% endif %}
 <div>
+{% if page.featured_image %}
+{% if page.featured_link %}<a href='{{page.featured_link}}'>{% endif %}
+<img class="img-center" src="/{{ page.featured_image }}" {% if page.featured_alt %}alt="{{ page.featured_image }}"{% endif %}>
+{% if page.featured_link %}</a>{% endif %}
+{% endif %}
+{% if page.featured_caption %}<p class='caption'>{{ page.featured_caption }}</p>{% endif %}
 {% block before_content %}{% endblock %}
 {% block page_content %}{{ page.content }}{% endblock %}
 {% block after_content %}{% endblock %}

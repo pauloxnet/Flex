@@ -5,6 +5,13 @@
 {% block title %} &ndash; {{ category }}{% endblock %}
 {% set summarise = True %}
 {% block content_title %}
-<h2 id="{{ category }}" class="center">{{ _('Category') }}: {{ category }}</h2>
+<article>
+<header>
+<h2 id="{{ category }}" class="center">{{ _('Category') }}: {{ category.page.title }}</h2>
+</header>
+<div>
+<h3>{{ category.page.content }}</h3>
+</div>
+</article>
 <hr/>
 {% endblock %}

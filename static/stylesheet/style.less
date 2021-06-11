@@ -18,11 +18,17 @@ h6 {
           opacity: 1;
       }
   }
+  img {
+    vertical-align: text-bottom;
+  }
 }
 
-h1{
+h1 {
   font-size: 2.4em;
   font-weight: bold;
+  img {
+    vertical-align: middle;
+  }
 }
 
 h2 {
@@ -141,7 +147,7 @@ main {
   nav {
     text-align: center;
     text-transform: uppercase;
-    font-size: .72em;
+    font-size: 1em;
     padding: 14px 0 14px 0;
     border-bottom: @nav-border-color 1px solid;
   }
@@ -165,6 +171,19 @@ main {
   .neighbors {
     margin: 4% 0% 4% 0%;
     height: 20px;
+    a {
+      display: flex;
+      max-width: max-content;
+      width: 40%;
+      span:not(.fa) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .fa {
+        margin: auto 0 auto auto;
+      }
+    }
   }
 
   .pagination {
@@ -181,7 +200,16 @@ main {
   article {
     margin: 0 5% 5% 5%;
 
+    h1 {
+      clear: both;
+    }
+
     p.caption {
+      color: @header-text-color;
+      font-size: 0.86em;
+    }
+
+    figcaption {
       color: @header-text-color;
       font-size: 0.86em;
     }
@@ -344,10 +372,34 @@ a.btn:hover {
   text-align: center;
 }
 
+.left {
+  float: left;
+  margin-right: 1em;
+  clear: left;
+}
+
+.right {
+  float: right;
+  margin-left: 1em;
+  clear: right;
+}
+
 .img-center {
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+.img-left {
+  float: left;
+  margin: 0 2em 0 0;
+  clear: both;
+}
+
+.img-right {
+  float: right;
+  margin: 0 0 0 2em;
+  clear: both;
 }
 
 .align-center {
@@ -605,6 +657,17 @@ ul.social {
   }
 }
 
+.mapbox {
+  overflow: hidden;
+  background: none !important;
+  height: 564px;
+  width: 100%;
+  iframe {
+    width: 100%;
+    height: 564px;
+  }
+}
+
 dl {
   dt {
     font-weight: bold;
@@ -618,4 +681,9 @@ ul.categories, ul.tags {
     li {
         margin: 0.5em 0 0 0;
     }
+}
+
+header i.sticky {
+  float: right;
+  color: @orange;
 }

@@ -20,7 +20,7 @@
 {% import 'partial/translations.html' as translations with context %}
 {{ translations.translations_for(article) }}
 {% endif %}
-<h1 id="{{ article.slug }}">{{ article.title }}</h1>
+<h1 id="{{ article.slug }}">{% if article.logo %}<img src="/{{ article.logo }}" {% if article.logoalt %}alt="{{article.logoalt}}"{% endif %}>&nbsp;{% endif %}{{ article.title }}</h1>
 </header>
 {% if article.metadata['summary'] %}
 <h3>{{ article.summary }}</h3>
@@ -57,6 +57,11 @@
 </a>
 </li>
 <li>
+<a class="sc-reddit" href="{{article.share_post['reddit']}}" target="_blank" rel="noopener" title="Share on Reddit" aria-label="Reddit">
+<i class="fab fa-reddit-alien"></i>
+</a>
+</li>
+<li>
 <a class="sc-hacker-news" href="{{article.share_post['hacker-news']}}" target="_blank" rel="noopener" title="Share on Hacker News" aria-label="Hacker News">
 <i class="fab fa-hacker-news-square"></i>
 </a>
@@ -73,18 +78,7 @@
 </div>
 {% endif %}
 {% include "partial/neighbors.html" %}
-{% if article.related_posts %}
-<div class="related-posts">
-<h4>{{ _('You might enjoy') }}</h4>
-<ul class="related-posts">
-{% for related_post in article.related_posts %}
-<li><a href="{{ SITEURL }}/{{ related_post.url }}{% if not DISABLE_URL_HASH %}#top{% endif %}">{{ related_post.title }}</a></li>
-{% endfor %}
-</ul>
-</div>
-{% elif ADD_THIS_ID %}
-<div class="addthis_relatedposts_inline"></div>
-{% endif %}
+{% include "partial/related_posts.html" %}
 {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.article_bottom %}
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle ads-responsive" data-ad-client="{{ GOOGLE_ADSENSE.ca_id }}" data-ad-slot="{{ GOOGLE_ADSENSE.ads.article_bottom }}"></ins>

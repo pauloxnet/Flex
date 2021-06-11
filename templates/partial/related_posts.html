@@ -1,0 +1,14 @@
+{% if 'related_posts' in PLUGINS %}
+{% if article.related_posts %}
+<div class="related-posts">
+<h4>{{ _('You might enjoy') }}</h4>
+<ul class="related-posts">
+{% for related_post in article.related_posts %}
+<li><a href="{{ SITEURL }}/{{ related_post.url }}{% if not DISABLE_URL_HASH %}#top{% endif %}">{{ related_post.title }}</a></li>
+{% endfor %}
+</ul>
+</div>
+{% elif ADD_THIS_ID %}
+<div class="addthis_relatedposts_inline"></div>
+{% endif %}
+{% endif %}

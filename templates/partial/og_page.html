@@ -5,14 +5,17 @@
 {% endif %}
 <meta property="og:site_name" content="{{ SITENAME }}"/>
 <meta property="og:title" content="{{ SITENAME }} - {{ page.title|striptags|escape  }}"/>
-<meta property="og:description" content="{{ SITEDESCRIPTION }}"/>
-<meta property="og:locale" content="{{ default_locale }}"/>
+<meta property="og:description" content="{{ page.summary|striptags|escape }}"/>
+<meta property="og:locale" content="{{ page.metadata.get('og_locale', default_locale) }}"/>
 <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}"/>
 <meta property="og:type" content="website"/>
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@{{TWITTER_USERNAME}}" />
 <meta name="twitter:creator" content="@{{TWITTER_USERNAME}}" />
-{% if SITELOGO %}
+{% if 'cover' in page.metadata %}
+<meta property="og:image" content="{{ SITEURL }}/{{ page.metadata['cover'] }}">
+<meta property="og:image:alt" content="{{ page.metadata['alt'] }}">
+{% else %}
 <meta property="og:image" content="{{ SITELOGO }}">
 <meta property="og:image:alt" content="{{ AUTHOR }} photo">
 {% endif %}

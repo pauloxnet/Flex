@@ -2,16 +2,16 @@
 {% block canonical_rel %}
 <link rel="canonical" href="{{ SITEURL }}/tag">
 {% endblock %}
-{% block title %} &ndash; {{ _('Tags') }}{% endblock %}
+{% block title %} &ndash; 🏷️ {{ _('Tags') }}{% endblock %}
 {% block content %}
 <article class="single">
 <header>
-<h1>{{ _('Tags') }} 🏷️</h1>
+<h1 id="tags">🏷️ {{ _('Tags') }}</h1>
 </header>
 <div>
 <ul class="list tags">
 {%- for tag, articles in tags|sort %}
-<li><a href="{{ SITEURL }}/{{ tag.url }}{% if not DISABLE_URL_HASH %}#top{% endif %}">{{ tag }}</a> ({{ articles|count }})</li>
+<li><a href="{{ SITEURL }}/{{ tag.url }}{% if not DISABLE_URL_HASH %}#top{% endif %}">{{ tag.page.title }}</a> ({{ articles|count }})</li>
 {% endfor %}
 </ul>
 </div>
